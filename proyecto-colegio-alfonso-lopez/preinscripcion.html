@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Preinscripción</title>
+    <link rel="stylesheet" href="recursos/estilos/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Botón de volver -->
+<a href="matriculas.html#pre" class="btn-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+
+<div class="center-wrapper">
+
+    <div class="center-card">
+
+        <h1><i class="fa-solid fa-file-signature"></i> Formulario de Preinscripción</h1>
+        <p class="form-desc">Completa los datos para iniciar el proceso de preinscripción.</p>
+
+        <form class="form-body">
+
+            <!-- Datos del estudiante -->
+            <h2 class="section-title">Datos del Estudiante</h2>
+
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <div class="input-icon">
+                    <input type="text" placeholder="Nombre y apellidos" required>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Documento de Identidad</label>
+                <div class="input-icon">
+                    <input type="text" placeholder="Número de documento" required>
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Curso al que se desea inscribir</label>
+                <div class="input-icon">
+                    <select required>
+                        <option disabled selected>Selecciona un curso</option>
+                        <option>Preescolar</option>
+                        <option>Primaria</option>
+                        <option>Secundaria</option>
+                        <option>Bachillerato</option>
+                    </select>
+                    <i class="fa-solid fa-school"></i>
+                </div>
+            </div>
+
+            <h2 class="section-title">Datos del Acudiente</h2>
+
+            <div class="form-group">
+                <label>Nombre del Acudiente</label>
+                <div class="input-icon">
+                    <input type="text" placeholder="Nombre completo del acudiente" required>
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono de contacto</label>
+                <div class="input-icon">
+                    <input type="number" placeholder="Número telefónico" required>
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <div class="input-icon">
+                    <input type="email" placeholder="correo@ejemplo.com" required>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </div>
+
+            <!-- Información adicional -->
+            <h2 class="section-title">Información Adicional</h2>
+
+            <div class="form-group">
+                <label>Observaciones</label>
+                <div class="input-icon textarea-icon">
+                    <textarea placeholder="Información relevante sobre el estudiante"></textarea>
+                    <i class="fa-solid fa-comment"></i>
+                </div>
+            </div>
+
+            <button class="btn-submit-full">Enviar Solicitud <i class="fa-solid fa-paper-plane"></i></button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
