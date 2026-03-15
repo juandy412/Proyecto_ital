@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrículas y Admisiones - I.T. Alfonso López</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="recursos/estilos/estilo.css" />
+</head>
+<body>
+  
+  <div id="encabezado"></div> 
+  <div id="navegacion"></div>
+
+  <main>
+    
+    <section class="hero-slider-container hero-admisiones" style="background-image: url(recursos/imagenes/navidad.jpg);">
+        <div class="hero-content">
+            <h1>Proceso de Admisiones y Matrículas 2026</h1>
+            <p>Asegura el cupo de tu hijo en la Institución Técnica Alfonso López.</p>
+            <a href="#cupos-disponibles" class="portal-btn" style="background-color: var(--secondary);">Ver Disponibilidad <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+    
+    <div class="main-content">
+        
+        <section id="cupos-disponibles" class="fade-in-section" style="padding: 40px 0; background: var(--highlight);">
+            <div class="section-header">
+                <h2>Estado de Cupos por Nivel</h2>
+                <p>La disponibilidad se actualiza en tiempo real y puede variar. ¡Actúa rápido!</p>
+            </div>
+
+            <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="card" style="border-bottom: 5px solid var(--primary); background: var(--white);">
+                    <i class="fas fa-baby card-icon" style="color: var(--primary);"></i>
+                    <h3 style="margin-top: 15px;">Preescolar / Primaria</h3>
+                    <p style="font-size: 1.5em; font-weight: 700; color: var(--primary);">Cupos Disponibles</p>
+                </div>
+                <div class="card" style="border-bottom: 5px solid var(--green-dark); background: var(--white);">
+                    <i class="fas fa-user-graduate card-icon" style="color: var(--green-dark);"></i>
+                    <h3 style="margin-top: 15px;">Bachillerato Académico</h3>
+                    <p style="font-size: 1.5em; font-weight: 700; color: var(--green-dark);">Pocos Cupos</p>
+                </div>
+                <div class="card" style="border-bottom: 5px solid var(--secondary); background: var(--white);">
+                    <i class="fas fa-cogs card-icon" style="color: var(--secondary);"></i>
+                    <h3 style="margin-top: 15px;">Bachillerato Técnico</h3>
+                    <p style="font-size: 1.5em; font-weight: 700; color: #D32F2F;">Cupos Agotados</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-style: italic; color: var(--text-light);"><i class="fas fa-info-circle"></i> Los cupos agotados pasan a lista de espera con la preinscripción.</p>
+            </div>
+        </section>
+
+
+        <section class="fade-in-section" style="padding: 40px 0;">
+            <div class="section-header">
+                <h2>Calendario Oficial 2026</h2>
+                <p>Fechas clave para no perder el cupo. ¡La disponibilidad es limitada!</p>
+            </div>
+            
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha Límite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**Publicación de Cupos Disponibles**</td>
+                        <td>25 de Octubre</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>**Preinscripción en Línea (Nuevos)**</td>
+                        <td>01 de Noviembre</td>
+                        <td style="font-weight: bold; color: var(--secondary);">15 de Diciembre</td>
+                    </tr>
+                    <tr>
+                        <td>**Revisión y Entrevistas**</td>
+                        <td>03 al 17 de Diciembre</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>**Publicación de Admitidos**</td>
+                        <td>20 de Diciembre</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>**Matrícula (Estudiantes Nuevos)**</td>
+                        <td>10 de Enero</td>
+                        <td style="font-weight: bold; color: var(--primary);">20 de Enero</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="recursos/archivos/Circular_Actividades_2026.pdf" target="_blank" class="portal-btn" style="background: var(--green-dark);">Descargar Circular Completa <i class="fas fa-file-pdf"></i></a>
+            </div>
+        </section>
+
+        <section id="proceso" class="fade-in-section" style="padding: 60px 0;">
+            <div class="section-header">
+                <h2>Pasos para ser Estudiante ITAL</h2>
+                <p>Un proceso sencillo y transparente para asegurar tu lugar en nuestra institución.</p>
+            </div>
+            
+            <div id="pre" class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <i class="fas fa-desktop" style="color: var(--secondary); margin-right: 10px;"></i>
+                        <h3 style="color: var(--secondary);">1. Preinscripción en Línea</h3>
+                        <p>Complete el formulario web con los datos del aspirante y los acudientes. **Este paso es 100% digital**.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <i class="fas fa-file-invoice" style="color: var(--primary); margin-right: 10px;"></i>
+                        <h3 style="color: var(--primary);">2. Radicación de Documentos</h3>
+                        <p>Radicar los documentos de soporte **físicamente** en la Secretaría Académica, junto al comprobante de preinscripción.</p>
+                        <a href="#requisitos-detalle" class="portal-btn" style="background: var(--primary); margin-top: 10px;">Ver Requisitos <i class="fas fa-list-alt"></i></a>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <i class="fas fa-comments" style="color: var(--secondary); margin-right: 10px;"></i>
+                        <h3 style="color: var(--secondary);">3. Entrevista con Psicorientación</h3>
+                        <p>La psicóloga escolar contactará al acudiente para agendar una entrevista de perfil y validar la documentación.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <i class="fas fa-check-circle" style="color: var(--primary); margin-right: 10px;"></i>
+                        <h3 style="color: var(--primary);">4. Publicación de Admitidos</h3>
+                        <p>Verifique el listado oficial de admitidos en la página web y en la cartelera de la secretaría.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <i class="fas fa-id-card-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                        <h3 style="color: var(--secondary);">5. Matrícula Final</h3>
+                        <p>Formalizar la matrícula con el rector o el delegado en las fechas establecidas del calendario.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="requisitos-detalle" class="asymmetrical-section fade-in-section" style="margin: 60px 0; border: 1px solid var(--highlight); background: var(--light-bg);">
+            <div class="text-column">
+                <h2 style="color: var(--green-dark); border-bottom: 3px solid var(--green-dark); padding-bottom: 5px; margin-bottom: 15px;">
+                    Requisitos Mínimos (Estudiantes Nuevos)
+                </h2>
+                <p>Asegúrese de tener toda la documentación en regla antes de la radicación. Los documentos deben ser copias legibles y completas.</p>
+                
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li><i class="fas fa-file-alt" style="color: var(--green-dark); margin-right: 10px;"></i> Registro Civil (menores de 7 años) o Tarjeta de Identidad.</li>
+                    <li><i class="fas fa-file-alt" style="color: var(--green-dark); margin-right: 10px;"></i> Certificados de notas de grados anteriores (desde 5°).</li>
+                    <li><i class="fas fa-file-alt" style="color: var(--green-dark); margin-right: 10px;"></i> Boletín del último período cursado.</li>
+                    <li><i class="fas fa-file-alt" style="color: var(--green-dark); margin-right: 10px;"></i> Paz y Salvo del colegio de procedencia.</li>
+                    <li><i class="fas fa-file-alt" style="color: var(--green-dark); margin-right: 10px;"></i> Copia del Carné de Vacunación (Preescolar y Primaria).</li>
+                </ul>
+                <p style="margin-top: 20px; font-style: italic; color: var(--text-light);">Todos los documentos deben ser presentados en una carpeta debidamente legajada en la oficina de secretaría, Sede Principal.</p>
+            </div>
+            <div class="image-column">
+                <img src="recursos/imagenes/documentos.jpg" alt="Pila de documentos escolares" />
+            </div>
+        </section>
+        
+    </div>
+
+  </main>
+  
+  <div id="pie-pagina"></div>
+
+  <a href="#" id="scrollTopBtn" title="Volver al Inicio">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="recursos/scripts/principal.js"></script>
+
+</body>
+</html>

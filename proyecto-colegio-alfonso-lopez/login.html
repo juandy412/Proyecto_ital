@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Portal Académico</title>
+  <link rel="stylesheet" href="recursos/estilos/estilo.css" />
+</head>
+<body>
+  <div id="encabezado"></div>
+  <div id="navegacion"></div>
+
+  <main class="main-content">
+    <section class="auth-card">
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm" autocomplete="off">
+        <label for="username">Usuario</label>
+        <input id="username" name="username" type="text" required />
+
+        <label for="password">Contraseña</label>
+        <input id="password" name="password" type="password" required />
+
+        <div id="loginError" class="form-error" aria-live="polite"></div>
+
+        <button type="submit" class="portal-btn">Entrar</button>
+      </form>
+      <p class="auth-note">
+        Nota: Credenciales en código para fines educativos. No es seguro en producción.
+      </p>
+    </section>
+  </main>
+
+  <div id="pie-pagina"></div>
+
+  <script src="recursos/scripts/login.js"></script>
+  <script src="recursos/scripts/principal.js"></script>
+</body>
+</html>

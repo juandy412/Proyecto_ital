@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias y Eventos - ITAL</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="recursos/estilos/estilo.css" />
+
+  <!-- BASE DE DATOS DE NOTICIAS -->
+  <script src="recursos/scripts/noticias-data.js"></script>
+</head>
+
+<body class="noticias-bg">
+
+  <!-- ENCABEZADO -->
+  <div id="encabezado"></div>
+
+  <!-- NAVEGACIÓN PRINCIPAL -->
+  <div id="navegacion"></div>
+
+  <main>
+
+    <!-- BANNER -->
+    <section class="hero-slider-container hero-noticias"
+      style="background-image: url('recursos/imagenes/banner-5.jpg');">
+      <div class="hero-content">
+        <h1>Últimas Noticias y Eventos</h1>
+        <p>Mantente al día con los logros académicos y culturales del ITAL.</p>
+      </div>
+    </section>
+
+    <div class="main-content">
+
+      <section class="fade-in-section" style="padding: 40px 0 60px;">
+        
+        <div class="section-header">
+          <h2>Publicaciones Recientes</h2>
+          <p>Aquí encontrarás actualizaciones importantes y comunicados oficiales.</p>
+        </div>
+
+        <!-- NOTICIAS DINÁMICAS -->
+        <div id="contenedor-noticias" class="info-grid" style="grid-template-columns: 1fr;"></div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a id="btnCargarMas" class="portal-btn" style="background: var(--primary);">
+             Cargar más noticias <i class="fas fa-arrow-down"></i>
+          </a>
+
+          <a id="btnCargarMenos" class="portal-btn"
+             style="background: var(--secondary); margin-top: 15px; display:none;">
+             Ver menos <i class="fas fa-arrow-up"></i>
+          </a>
+        </div>
+
+      </section>
+
+      <div style="text-align: center; margin-bottom: 50px;">
+        <a href="archivo-historico.html" class="portal-btn" style="background: var(--green-dark);">
+          Archivo Histórico <i class="fas fa-archive"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <div id="pie-pagina"></div>
+
+  <!-- BOTÓN SUBIR -->
+  <a href="#" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- SCRIPT PRINCIPAL (ENCABEZADO, MENÚ, PIE, SCROLL) -->
+  <script src="recursos/scripts/principal.js"></script>
+
+  <!-- SCRIPT DE NOTICIAS -->
+  <script src="recursos/scripts/noticias.js"></script>
+
+</body>
+</html>

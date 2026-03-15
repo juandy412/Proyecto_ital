@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Archivo Histórico | ITAL</title>
+
+  <link rel="stylesheet" href="recursos/estilos/estilo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="archivo-bg">
+
+<a href="noticias.html" class="btn-volver-fixed">
+  <i class="fa-solid fa-arrow-left"></i> Volver
+</a>
+
+<main class="archivo-wrapper">
+
+  <h1>Archivo Histórico</h1>
+  <p class="archivo-desc">Consulta noticias antiguas registradas por la institución.</p>
+
+  <div class="archivo-search">
+    <input type="text" id="buscar" placeholder="Buscar noticia...">
+  </div>
+
+  <div id="lista" class="archivo-list">
+    <div class="noticia-card">
+      <h3>Convocatoria Ciencia y Tecnología 2024</h3>
+      <small>10 de Octubre de 2024 | Área de Innovación</small>
+      <p>La institución participó en la feria regional...</p>
+      <a class="portal-btn" href="noticia.html?id=1">Leer más</a>
+    </div>
+
+    <div class="noticia-card">
+      <h3>Celebración Día del Campesino</h3>
+      <small>5 de Junio de 2023 | Coordinación Académica</small>
+      <p>Evento cultural lleno de muestras agrícolas...</p>
+      <a class="portal-btn" href="noticia.html?id=3">Leer más</a>
+    </div>
+
+    <div class="noticia-card">
+      <h3>Mejoras en Infraestructura Deportiva</h3>
+      <small>22 de Agosto de 2022 | Área de Deportes</small>
+      <p>Renovación de la cancha múltiple...</p>
+      <a class="portal-btn" href="noticia.html?id=4">Leer más</a>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+  const b = document.getElementById("buscar");
+  const cards = document.querySelectorAll(".noticia-card");
+
+  b.onkeyup = () => {
+    const txt = b.value.toLowerCase();
+    cards.forEach(c => {
+      const contenido = c.innerText.toLowerCase();
+      c.style.display = contenido.includes(txt) ? "block" : "none";
+    });
+  };
+</script>
+
+</body>
+</html>
