@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ================================
@@ -115,6 +116,30 @@ document.addEventListener("DOMContentLoaded", () => {
       updateHeaderOffset();
       window.addEventListener("resize", updateHeaderOffset);
 
+=======
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const cargarEstructura = async () => {
+    try {
+      const [headHTML, navHTML, footHTML] = await Promise.all([
+        fetch("encabezado.html").then(r => r.text()),
+        fetch("navegacion.html").then(r => r.text()),
+        fetch("pie-pagina.html").then(r => r.text())
+      ]);
+
+      if (document.getElementById("encabezado"))
+        document.getElementById("encabezado").innerHTML = headHTML;
+
+      if (document.getElementById("navegacion"))
+        document.getElementById("navegacion").innerHTML = navHTML;
+
+      if (document.getElementById("pie-pagina"))
+        document.getElementById("pie-pagina").innerHTML = footHTML;
+
+      activarEnlaceActual();
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
       observarAnimaciones();
 
     } catch (error) {
@@ -124,6 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cargarEstructura();
 
+<<<<<<< HEAD
   /* ===============================================
       2. RESALTAR MENÚ ACTUAL
      =============================================== */
@@ -134,6 +160,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const height = Math.ceil(header.getBoundingClientRect().height);
     document.documentElement.style.setProperty('--header-height', `${height}px`);
   }
+=======
+
+
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   function activarEnlaceActual() {
     let archivo = window.location.pathname.split("/").pop();
 
@@ -143,15 +173,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll("#nav-list a");
 
     links.forEach(link => {
+<<<<<<< HEAD
       const destino = (link.getAttribute("href") || "").split("/").pop();
+=======
+      const destino = link.getAttribute("href");
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
       if (destino === archivo) link.classList.add("active");
       else link.classList.remove("active");
     });
   }
 
+<<<<<<< HEAD
   /* ===============================================
       3. BOTÓN VOLVER ARRIBA
   =============================================== */
+=======
+
+
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
   if (scrollTopBtn) {
@@ -165,9 +204,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+<<<<<<< HEAD
   /* ===============================================
       4. EFECTO FADE-IN
   =============================================== */
+=======
+
+
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   function observarAnimaciones() {
     const secciones = document.querySelectorAll(".fade-in-section");
 
@@ -183,6 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     secciones.forEach(sec => observer.observe(sec));
   }
 
+<<<<<<< HEAD
   /* ======================================================
        5. SISTEMA DE NOTICIAS DINÁMICAS (si existe)
      ====================================================== */
@@ -193,6 +238,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (document.getElementById("contenedor-noticias")) {
+=======
+
+
+
+  if (document.getElementById("contenedor-noticias")) {
+
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
     let noticiasMostradas = 0;
     const noticiasPorPagina = 3;
 
@@ -200,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnMas = document.getElementById("btnCargarMas");
     const btnMenos = document.getElementById("btnCargarMenos");
 
+<<<<<<< HEAD
     const noticiasArr = getNoticiasArray();
     if (!noticiasArr) {
       console.error("⚠ ERROR: No existe el arreglo 'noticias'. Debes definirlo en noticias-data.js");
@@ -276,6 +329,66 @@ document.addEventListener("DOMContentLoaded", () => {
         if (imgEl) imgEl.src = noticia.imagen;
       }
     }
+=======
+    if (typeof noticias === "undefined") {
+      console.error("⚠ ERROR: No existe el arreglo 'noticias'. Debes definirlo en noticias.html");
+      return;
+    }
+
+    function renderNoticia(noticia) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.textAlign = "left";
+
+      card.innerHTML = `
+        <h3 style="color: var(--primary);">${noticia.titulo}</h3>
+        <p style="font-style: italic; color: var(--text-light);">${noticia.fecha} | ${noticia.area}</p>
+        <p>${noticia.resumen}</p>
+        <a href="noticia.html?id=${noticia.id}" class="portal-btn"
+           style="background: var(--primary); margin-top: 15px;">
+           Leer más
+        </a>
+      `;
+
+      return card;
+    }
+
+
+    function mostrarNoticias() {
+      for (let i = noticiasMostradas; i < noticiasMostradas + noticiasPorPagina; i++) {
+        if (i >= noticias.length) {
+          btnMas.style.display = "none";
+          break;
+        }
+
+        contenedorNoticias.appendChild(renderNoticia(noticias[i]));
+      }
+
+      noticiasMostradas += noticiasPorPagina;
+
+      btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
+    }
+
+
+    function verMenos() {
+      noticiasMostradas -= noticiasPorPagina;
+      if (noticiasMostradas < noticiasPorPagina) noticiasMostradas = noticiasPorPagina;
+
+      contenedorNoticias.innerHTML = "";
+
+      for (let i = 0; i < noticiasMostradas; i++) {
+        contenedorNoticias.appendChild(renderNoticia(noticias[i]));
+      }
+
+      btnMas.style.display = "inline-flex";
+      btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
+    }
+
+    btnMas.addEventListener("click", mostrarNoticias);
+    btnMenos.addEventListener("click", verMenos);
+
+    mostrarNoticias();
+>>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   }
 
 });
