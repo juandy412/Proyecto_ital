@@ -1,0 +1,35 @@
+<header class="site-header" role="banner" style="background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%); border-bottom: 3px solid #FFC107; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+  <div class="container header-inner">
+    <div class="brand">
+      <a href="inicio.html" class="brand-link" aria-label="Inicio - Instituto Técnico Alfonso López">
+        <img src="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/logo-ital.webp" alt="Logo I.T. Alfonso López" class="brand-logo" />
+        <div class="brand-text">
+          <h1 class="site-title">Instituto Técnico Alfonso López</h1>
+          <p class="site-tagline">Formación técnica y humana desde 1950</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="bar-right" aria-hidden="false">
+      <div class="user-area" style="display: flex; align-items: center; gap: 12px;">
+        <span id="userInfo" class="user-name" style="display:none; white-space: nowrap; font-weight: 500;"></span>
+        
+        <a href="https://web.ufpso.edu.co/sia/collopez/" target="_blank" class="portal-btn" title="Portal Académico" id="portalBtn" style="display:none;">
+          <i class="fas fa-user-graduate" aria-hidden="true"></i>
+          <span class="visually-hidden">Portal Académico</span>
+        </a>
+        
+        <a href="#" id="logoutBtn" class="portal-btn logout" style="display:none;" title="Salir">
+          <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+          <span class="btn-text">Salir</span>
+        </a>
+
+        <button class="portal-btn" title="Mi carrito" style="background: var(--secondary); color: var(--black); border: none; cursor: pointer;" onclick="irAlCarrito()">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+          <span class="cart-count" style="display:none; background: #f44336; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 0.7rem; display: inline-flex; align-items: center; justify-content: center; margin-left: -8px;">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+

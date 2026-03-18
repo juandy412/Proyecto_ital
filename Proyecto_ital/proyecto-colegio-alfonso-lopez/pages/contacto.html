@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contáctanos - ITAL</title>
+  <link rel="stylesheet" href="../recursos/estilos/estilo.css" />
+  <style>
+    .form-row {
+      margin-bottom: 20px;
+    }
+    .form-row label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.98);
+    }
+    .form-row input:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+    }
+    .form-row input::placeholder,
+    .form-row textarea::placeholder {
+      color: #999;
+    }
+    .contact-feedback {
+      padding: 14px 16px;
+      border-radius: 8px;
+      border-left: 4px solid currentColor;
+      animation: slideDown 0.3s ease;
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .contact-feedback.success {
+      background: rgba(76, 175, 80, 0.12);
+      color: #1b5e20;
+      border-color: #4caf50;
+    }
+    .contact-feedback.error {
+      background: rgba(244, 67, 54, 0.12);
+      color: #b71c1c;
+      border-color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div id="encabezado"></div>
+  <div id="navegacion"></div>
+
+  <main>
+    <section class="hero-slider-container" style="background-image: url('/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/648890603_1411500861017275_1257039372269236125_n.jpg');">
+      <div class="hero-content">
+        <h1>Contáctanos</h1>
+        <p>¿Tienes dudas? Escríbenos y te responderemos lo antes posible.</p>
+      </div>
+    </section>
+
+    <section class="main-content" style="padding: 50px 20px;">
+      <div class="section-header">
+        <h2>Escríbenos</h2>
+        <p>Completa el formulario y nos pondremos en contacto contigo para resolver cualquier pregunta.</p>
+      </div>
+
+      <div class="info-grid" style="max-width: 1000px; margin: 0 auto; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div class="card" style="padding: 32px; border-left: 6px solid var(--primary);">
+          <h3 style="color: var(--green-dark); margin-bottom: 24px;">Formulario de Contacto</h3>
+          <form id="contactForm" autocomplete="on">
+            <div id="contactFeedback" class="contact-feedback" style="display:none;"></div>
+
+            <div class="form-row">
+              <label for="nombre">👤 Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre y apellido" />
+            </div>
+
+            <div class="form-row">
+              <label for="email">📧 Correo electrónico</label>
+              <input type="email" id="email" name="email" required placeholder="tumail@ejemplo.com" />
+            </div>
+
+            <div class="form-row">
+              <label for="telefono">📱 Teléfono (opcional)</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+57 123 456 7890" />
+            </div>
+
+            <div class="form-row">
+              <label for="asunto">📌 Asunto</label>
+              <input type="text" id="asunto" name="asunto" required placeholder="¿De qué quieres hablar?" />
+            </div>
+
+            <div class="form-row">
+              <label for="mensaje">💬 Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntanos con detalle qué necesitas..."></textarea>
+            </div>
+
+            <button type="submit" class="portal-btn" style="width: 100%; padding: 14px; font-size: 1rem;">
+              <i class="fas fa-paper-plane"></i> Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+        <div class="card" style="padding: 32px; border-left: 6px solid var(--secondary);">
+          <h3 style="color: var(--green-dark); margin-bottom: 24px;">Información de Contacto</h3>
+          
+          <div style="margin-bottom: 24px;">
+            <h4 style="color: var(--text); margin-bottom: 6px; font-size: 0.95rem;"><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i>Dirección</h4>
+            <p style="margin: 0; color: var(--text-muted);">Calle Principal #123<br />Municipio, Departamento</p>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <h4 style="color: var(--text); margin-bottom: 6px; font-size: 0.95rem;"><i class="fas fa-phone" style="color: var(--secondary); margin-right: 8px;"></i>Teléfono</h4>
+            <p style="margin: 0; color: var(--text-muted);"><strong>+57 123 456 7890</strong></p>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <h4 style="color: var(--text); margin-bottom: 6px; font-size: 0.95rem;"><i class="fas fa-envelope" style="color: var(--green-dark); margin-right: 8px;"></i>Correo</h4>
+            <p style="margin: 0; color: var(--text-muted);"><strong>info@ital.edu.co</strong></p>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 24px 0;" />
+
+          <h4 style="color: var(--text); margin-bottom: 12px; font-size: 0.95rem;">Redes Sociales</h4>
+          <div style="display: flex; gap: 12px;">
+            <a href="#" title="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #1877f2; color: white; font-size: 1.1rem; transition: transform 0.2s;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #e4405f; color: white; font-size: 1.1rem; transition: transform 0.2s;">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" title="Twitter" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #1da1f2; color: white; font-size: 1.1rem; transition: transform 0.2s;">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+
+          <div style="background: rgba(76, 175, 80, 0.08); padding: 16px; border-radius: 8px; margin-top: 24px; text-align: center;">
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.85rem;">
+              <i class="fas fa-info-circle"></i> Nos comprometemos a responder tus mensajes en un periodo máximo de 48 horas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="pie-pagina"></div>
+
+  <a href="#" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="../recursos/scripts/principal.js"></script>
+  <script src="../recursos/scripts/modal.js"></script>
+  <script src="../recursos/scripts/contacto.js"></script>
+</body>
+</html>

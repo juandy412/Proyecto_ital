@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Curso de Robótica",
+    "price": 150000,
+    "description": "Aprende programación y electrónica aplicada en 40 horas.",
+    "image": "recursos/imagenes/producto-robotica.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Taller de Agroindustria",
+    "price": 120000,
+    "description": "Prácticas de transformación y conservación de alimentos.",
+    "image": "recursos/imagenes/producto-agro.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Seminario de Emprendimiento",
+    "price": 90000,
+    "description": "Sesiones para crear modelos de negocio y proyectos.",
+    "image": "recursos/imagenes/producto-emprende.jpg"
+  }
+]

@@ -1,0 +1,84 @@
+/* ================================================= */
+/* 1. VARIABLES GLOBALES / RESET                     */
+/* ================================================= */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+/* Se usará una tipografía más moderna (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    /* Paleta de Colores ITAL */
+    --green: #4CAF50;          /* Verde principal de la ITAL */
+    --green-dark: #388E3C;     /* Verde oscuro para contrastes */
+    --green-light: #C8E6C9;    /* Verde muy claro para resaltado */
+    --primary: var(--green);
+    --secondary: #FFC107;      /* DORADO INSTITUCIONAL/AMARILLO FUERTE para acentos y contraste */
+    
+    /* Colores de Texto y Fondo */
+    --white: #ffffff;
+    --black: #000000;
+    --highlight: #f0f0f0;      /* Fondo suave (gris claro) */
+    --light-bg: #EAECEE;       /* Fondo secundario (para secciones) */
+    --footer-bg: #2A3538;      /* FONDO PIE DE PÁGINA (Gris Oscuro Neutro) */
+    --footer-text: #ECF0F1;    /* Texto de pie de página */
+    --text: #333333;           /* Color de texto principal (Negro) */
+    --text-light: #777777;     /* Color de texto secundario/gris */
+    --text-dark: #333333;      /* Texto oscuro */
+    --text-muted: #777777;     /* Texto muted */
+    
+    /* Tipografía */
+    --font-main: 'Poppins', sans-serif;
+    
+    /* Sombras */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    /* Ajuste para dejar espacio al encabezado (Header + Navegación) */
+    padding-top: 100px; 
+    background: var(--white);
+    min-height: 80vh;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Enlaces */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--green-dark);
+}
