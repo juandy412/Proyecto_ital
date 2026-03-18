@@ -1,6 +1,4 @@
-/*
-  Login simple (fines educativos). Usuario: estudiante | Contraseña: 12345
-*/
+// Login básico (simulación). En una aplicación real, la verificación debe realizarse en el servidor.
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");

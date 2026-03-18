@@ -1,13 +1,17 @@
-<<<<<<< HEAD
+// ============================================================================
+// Script Principal - Gestión de estructura, autenticación y componentes
+// ============================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ================================
-     AUTH (login simple - session)
-     ================================ */
+  // =========================================================================
+  // 1. AUTENTICACIÓN (Login simple - fines educativos)
+  // =========================================================================
+
   function isAuthenticated() {
     try {
-      const s = sessionStorage.getItem("authUser");
-      return !!(s && JSON.parse(s).user);
+      const auth = sessionStorage.getItem("authUser");
+      return !!(auth && JSON.parse(auth).user);
     } catch (e) {
       return false;
     }
@@ -16,19 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function requireAuthForPage() {
     const protectedPages = [
       "portal-academico.html",
-      "servicios.html",
       "panel-estudiante.html"
-      // agrega otros nombres de páginas que deban requerir login
     ];
-    let archivo = window.location.pathname.split("/").pop();
-    if (archivo === "" || archivo === "index.html")
-      archivo = "inicio.html";
+    let currentPage = window.location.pathname.split("/").pop();
+    if (!currentPage || currentPage === "index.html") {
+      currentPage = "inicio.html";
+    }
 
-    if (protectedPages.includes(archivo)) {
-      if (!isAuthenticated()) {
-        const redirect = encodeURIComponent(window.location.pathname + window.location.search);
-        window.location.href = "login.html?redirect=" + redirect;
-      }
+    if (protectedPages.includes(currentPage) && !isAuthenticated()) {
+      const pageToRedirect = currentPage || "inicio.html";
+      const redirect = encodeURIComponent(pageToRedirect);
+      window.location.href = "login.html?redirect=" + redirect;
     }
   }
 
@@ -38,17 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const portalBtn = document.getElementById("portalBtn");
     const serviciosNav = document.getElementById("serviciosNav");
     const loginNav = document.getElementById("loginNav");
-    if (!logoutBtn && !userInfo && !portalBtn && !serviciosNav && !loginNav) return;
+
+    if (!logoutBtn && !userInfo && !portalBtn && !serviciosNav && !loginNav) {
+      return;
+    }
 
     try {
-      const s = sessionStorage.getItem("authUser");
-      if (s) {
-        const u = JSON.parse(s);
+      const auth = sessionStorage.getItem("authUser");
+      if (auth) {
+        const userData = JSON.parse(auth);
         document.body.classList.add("student-mode");
+
         if (userInfo) {
-          userInfo.textContent = `Hola, ${u.user}`;
+          userInfo.textContent = `Bienvenido, ${userData.user}`;
           userInfo.style.display = "inline-block";
         }
+
         if (logoutBtn) {
           logoutBtn.style.display = "inline-flex";
           logoutBtn.addEventListener("click", e => {
@@ -57,19 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "login.html";
           });
         }
-        if (portalBtn) {
-          portalBtn.style.display = "inline-flex";
-        }
-        if (serviciosNav) {
-          serviciosNav.style.display = "block";
-        }
-        if (loginNav) {
-          loginNav.style.display = "none";
-        }
+
+        if (portalBtn) portalBtn.style.display = "inline-flex";
+        if (serviciosNav) serviciosNav.style.display = "block";
+        if (loginNav) loginNav.style.display = "none";
+
         return;
       }
     } catch (e) {
-      /* ignore */
+      console.error("Error procesando autenticación:", e);
     }
 
     document.body.classList.remove("student-mode");
@@ -80,13 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (loginNav) loginNav.style.display = "block";
   }
 
-  // Ejecutar protección al inicio
-  requireAuthForPage();
+  // =========================================================================
+  // 2. CARGA DE COMPONENTES (Header, Navegación, Footer)
+  // =========================================================================
 
-  /* ================================
-     1. CARGA DE ENCABEZADO / MENÚ / PIE
-  =================================== */
-  const cargarEstructura = async () => {
+  async function cargarEstructura() {
     try {
       const [headHTML, navHTML, footHTML] = await Promise.all([
         fetch("components/encabezado.html").then(r => r.text()),
@@ -98,61 +99,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const navEl = document.getElementById("navegacion");
       const footEl = document.getElementById("pie-pagina");
 
-      if (headEl) headEl.innerHTML = headHTML;
-      const navPlaceholder = headEl?.querySelector("#nav-placeholder");
-      if (navPlaceholder) {
-        // Insertar siempre la navegación dentro del header para que se vea como un solo bloque
-        navPlaceholder.innerHTML = navHTML;
+      if (headEl) {
+        headEl.innerHTML = headHTML;
       }
-      // Mantener el contenedor #navegacion vacío para compatibilidad con páginas antiguas.
-      if (navEl) navEl.innerHTML = "";
+
+      if (navEl) navEl.innerHTML = navHTML;
       if (footEl) footEl.innerHTML = footHTML;
 
-      // después de insertar la navegación: activar enlace actual y configurar logout
       activarEnlaceActual();
       setupLogoutButton();
-
-      // Ajustar espacio superior en función de la altura real del header + nav
+      updateCarritoCount();
       updateHeaderOffset();
+
       window.addEventListener("resize", updateHeaderOffset);
-
-=======
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const cargarEstructura = async () => {
-    try {
-      const [headHTML, navHTML, footHTML] = await Promise.all([
-        fetch("encabezado.html").then(r => r.text()),
-        fetch("navegacion.html").then(r => r.text()),
-        fetch("pie-pagina.html").then(r => r.text())
-      ]);
-
-      if (document.getElementById("encabezado"))
-        document.getElementById("encabezado").innerHTML = headHTML;
-
-      if (document.getElementById("navegacion"))
-        document.getElementById("navegacion").innerHTML = navHTML;
-
-      if (document.getElementById("pie-pagina"))
-        document.getElementById("pie-pagina").innerHTML = footHTML;
-
-      activarEnlaceActual();
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
       observarAnimaciones();
 
     } catch (error) {
       console.error("Error cargando estructura:", error);
     }
-  };
+  }
 
-  cargarEstructura();
-
-<<<<<<< HEAD
-  /* ===============================================
-      2. RESALTAR MENÚ ACTUAL
-     =============================================== */
+  // =========================================================================
+  // 3. AJUSTAR ALTURA DEL HEADER
+  // =========================================================================
 
   function updateHeaderOffset() {
     const header = document.querySelector('.site-header');
@@ -160,235 +129,150 @@ document.addEventListener("DOMContentLoaded", () => {
     const height = Math.ceil(header.getBoundingClientRect().height);
     document.documentElement.style.setProperty('--header-height', `${height}px`);
   }
-=======
 
+  // =========================================================================
+  // 4. RESALTAR ENLACE ACTUAL EN NAVEGACIÓN
+  // =========================================================================
 
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   function activarEnlaceActual() {
-    let archivo = window.location.pathname.split("/").pop();
-
-    if (archivo === "" || archivo === "index.html")
-      archivo = "inicio.html";
+    let currentPage = window.location.pathname.split("/").pop();
+    if (!currentPage || currentPage === "index.html") {
+      currentPage = "inicio.html";
+    }
 
     const links = document.querySelectorAll("#nav-list a");
-
     links.forEach(link => {
-<<<<<<< HEAD
-      const destino = (link.getAttribute("href") || "").split("/").pop();
-=======
-      const destino = link.getAttribute("href");
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
-      if (destino === archivo) link.classList.add("active");
-      else link.classList.remove("active");
+      const href = (link.getAttribute("href") || "").split("/").pop();
+      if (href === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
     });
   }
 
-<<<<<<< HEAD
-  /* ===============================================
-      3. BOTÓN VOLVER ARRIBA
-  =============================================== */
-=======
+  // =========================================================================
+  // 5. BOTÓN VOLVER AL INICIO
+  // =========================================================================
 
-
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   const scrollTopBtn = document.getElementById("scrollTopBtn");
-
   if (scrollTopBtn) {
     window.addEventListener("scroll", () => {
       scrollTopBtn.style.display = window.scrollY > 500 ? "flex" : "none";
     });
-
-    scrollTopBtn.addEventListener("click", e => {
-      e.preventDefault();
+    scrollTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-<<<<<<< HEAD
-  /* ===============================================
-      4. EFECTO FADE-IN
-  =============================================== */
-=======
+  // =========================================================================
+  // 6. OBSERVADOR DE ANIMACIONES (Intersection Observer)
+  // =========================================================================
 
-
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
   function observarAnimaciones() {
-    const secciones = document.querySelectorAll(".fade-in-section");
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    secciones.forEach(sec => observer.observe(sec));
-  }
-
-<<<<<<< HEAD
-  /* ======================================================
-       5. SISTEMA DE NOTICIAS DINÁMICAS (si existe)
-     ====================================================== */
-  function getNoticiasArray() {
-    if (typeof window !== "undefined" && window.noticias) return window.noticias;
-    if (typeof noticias !== "undefined") return noticias;
-    return null;
-  }
-
-  if (document.getElementById("contenedor-noticias")) {
-=======
-
-
-
-  if (document.getElementById("contenedor-noticias")) {
-
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
-    let noticiasMostradas = 0;
-    const noticiasPorPagina = 3;
-
-    const contenedorNoticias = document.getElementById("contenedor-noticias");
-    const btnMas = document.getElementById("btnCargarMas");
-    const btnMenos = document.getElementById("btnCargarMenos");
-
-<<<<<<< HEAD
-    const noticiasArr = getNoticiasArray();
-    if (!noticiasArr) {
-      console.error("⚠ ERROR: No existe el arreglo 'noticias'. Debes definirlo en noticias-data.js");
-    } else {
-
-      function renderNoticia(noticia) {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.style.textAlign = "left";
-
-        card.innerHTML = `
-          <h3 style="color: var(--primary);">${noticia.titulo}</h3>
-          <p style="font-style: italic; color: var(--text-light);">${noticia.fecha} | ${noticia.area}</p>
-          <p>${noticia.resumen}</p>
-          <a href="noticia.html?id=${noticia.id}" class="portal-btn"
-             style="background: var(--primary); margin-top: 15px;">
-             Leer más
-          </a>
-        `;
-        return card;
-      }
-
-      function mostrarNoticias() {
-        for (let i = noticiasMostradas; i < noticiasMostradas + noticiasPorPagina; i++) {
-          if (i >= noticiasArr.length) {
-            if (btnMas) btnMas.style.display = "none";
-            break;
+    try {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
           }
-          contenedorNoticias.appendChild(renderNoticia(noticiasArr[i]));
-        }
-        noticiasMostradas += noticiasPorPagina;
-        if (btnMenos) btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
-      }
+        });
+      }, { threshold: 0.1 });
 
-      function verMenos() {
-        noticiasMostradas -= noticiasPorPagina;
-        if (noticiasMostradas < noticiasPorPagina) noticiasMostradas = noticiasPorPagina;
-
-        contenedorNoticias.innerHTML = "";
-        for (let i = 0; i < noticiasMostradas; i++) {
-          contenedorNoticias.appendChild(renderNoticia(noticiasArr[i]));
-        }
-        if (btnMas) btnMas.style.display = "inline-flex";
-        if (btnMenos) btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
-      }
-
-      if (btnMas) btnMas.addEventListener("click", mostrarNoticias);
-      if (btnMenos) btnMenos.addEventListener("click", verMenos);
-
-      mostrarNoticias();
+      document.querySelectorAll(".fade-in-section").forEach(el => {
+        observer.observe(el);
+      });
+    } catch (error) {
+      console.error("Error con IntersectionObserver:", error);
     }
   }
 
-  /* ======================================================
-       6. CARGAR DETALLE DE NOTICIA
-     ====================================================== */
-  if (window.location.pathname.includes("noticia.html")) {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+  // =========================================================================
+  // 7. MOSTRAR PRODUCTOS DESDE JSON CON FETCH
+  // =========================================================================
 
-    const noticiasArr = getNoticiasArray();
+  async function cargarProductos() {
+    const contenedor = document.getElementById("productos-container");
+    if (!contenedor) return;
 
-    if (noticiasArr && id) {
-      const noticia = noticiasArr.find(n => n.id == id);
-      if (noticia) {
-        const tEl = document.getElementById("tituloNoticia");
-        const fEl = document.getElementById("fechaArea");
-        const cEl = document.getElementById("contenidoNoticia");
-        const imgEl = document.getElementById("imagenNoticia");
+    try {
+      const response = await fetch("data/products.json");
+      const productos = await response.json();
 
-        if (tEl) tEl.textContent = noticia.titulo;
-        if (fEl) fEl.textContent = noticia.fecha + " | " + noticia.area;
-        if (cEl) cEl.innerHTML = noticia.contenido;
-        if (imgEl) imgEl.src = noticia.imagen;
+      const template = document.getElementById("producto-template");
+      if (!template) {
+        console.error("Template con id 'producto-template' no encontrado");
+        return;
       }
+
+      productos.forEach(producto => {
+        const clone = template.content.cloneNode(true);
+        
+        clone.querySelector(".prod-title").textContent = producto.name;
+        clone.querySelector(".prod-price").textContent = `$${producto.price.toLocaleString()}`;
+        clone.querySelector(".prod-desc").textContent = producto.description;
+        
+        const img = clone.querySelector(".prod-img");
+        if (img) img.src = producto.image;
+
+        contenedor.appendChild(clone);
+      });
+    } catch (error) {
+      console.error("Error cargando productos:", error);
     }
-=======
-    if (typeof noticias === "undefined") {
-      console.error("⚠ ERROR: No existe el arreglo 'noticias'. Debes definirlo en noticias.html");
+  }
+
+  // =========================================================================
+  // 8. WEB COMPONENT - ProductCard (ya está definido en product-card.js)
+  // No es necesario redefinirlo aquí
+  // =========================================================================
+
+  // El componente <product-card> está disponible si se incluye:
+  // <script src="recursos/scripts/product-card.js"></script>
+  // en el HTML
+
+  // =========================================================================
+  // 9. ACTUALIZAR CONTADOR DEL CARRITO
+  // =========================================================================
+
+  function updateCarritoCount() {
+    try {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cartBtn = document.querySelector(".cart-count");
+      if (cartBtn && cart.length > 0) {
+        cartBtn.textContent = cart.length;
+        cartBtn.style.display = "inline-flex";
+      } else if (cartBtn) {
+        cartBtn.style.display = "none";
+      }
+    } catch (e) {
+      console.error("Error actualizando contador del carrito:", e);
+    }
+  }
+
+  // Escuchar cambios en localStorage (desde otras pestañas/ventanas)
+  window.addEventListener("storage", updateCarritoCount);
+
+  // =========================================================================
+  // 10. FUNCIÓN PARA IR AL CARRITO CON VALIDACIÓN DE LOGIN
+  // =========================================================================
+
+  window.irAlCarrito = function() {
+    const isLoggedIn = sessionStorage.getItem("authUser");
+    if (!isLoggedIn) {
+      const redirect = encodeURIComponent("carrito.html");
+      window.location.href = `login.html?redirect=${redirect}`;
       return;
     }
+    window.location.href = "carrito.html";
+  };
 
-    function renderNoticia(noticia) {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.textAlign = "left";
+  // =========================================================================
+  // INICIALIZACIÓN
+  // =========================================================================
 
-      card.innerHTML = `
-        <h3 style="color: var(--primary);">${noticia.titulo}</h3>
-        <p style="font-style: italic; color: var(--text-light);">${noticia.fecha} | ${noticia.area}</p>
-        <p>${noticia.resumen}</p>
-        <a href="noticia.html?id=${noticia.id}" class="portal-btn"
-           style="background: var(--primary); margin-top: 15px;">
-           Leer más
-        </a>
-      `;
-
-      return card;
-    }
-
-
-    function mostrarNoticias() {
-      for (let i = noticiasMostradas; i < noticiasMostradas + noticiasPorPagina; i++) {
-        if (i >= noticias.length) {
-          btnMas.style.display = "none";
-          break;
-        }
-
-        contenedorNoticias.appendChild(renderNoticia(noticias[i]));
-      }
-
-      noticiasMostradas += noticiasPorPagina;
-
-      btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
-    }
-
-
-    function verMenos() {
-      noticiasMostradas -= noticiasPorPagina;
-      if (noticiasMostradas < noticiasPorPagina) noticiasMostradas = noticiasPorPagina;
-
-      contenedorNoticias.innerHTML = "";
-
-      for (let i = 0; i < noticiasMostradas; i++) {
-        contenedorNoticias.appendChild(renderNoticia(noticias[i]));
-      }
-
-      btnMas.style.display = "inline-flex";
-      btnMenos.style.display = noticiasMostradas > noticiasPorPagina ? "inline-flex" : "none";
-    }
-
-    btnMas.addEventListener("click", mostrarNoticias);
-    btnMenos.addEventListener("click", verMenos);
-
-    mostrarNoticias();
->>>>>>> 3c4907e8948b3716ff50116ddfdbd40cee16958a
-  }
+  requireAuthForPage();
+  cargarEstructura();
+  cargarProductos();
 
 });

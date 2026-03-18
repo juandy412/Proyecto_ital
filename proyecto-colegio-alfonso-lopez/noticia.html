@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticia</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="recursos/estilos/estilo.css" />
+</head>
+<body>
+  <div id="encabezado"></div>
+  <div id="navegacion"></div>
+
+  <main>
+    <section class="main-content" style="padding: 40px 20px;">
+      <a href="noticias.html" class="portal-btn" style="margin-bottom: 30px; display: inline-flex;">
+        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Volver a Noticias
+      </a>
+
+      <div id="noticia-detalle" style="max-width: 1000px; margin: 0 auto;"></div>
+    </section>
+  </main>
+
+  <div id="pie-pagina"></div>
+
+  <script src="recursos/scripts/noticias-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = Number(params.get("id"));
+      const contenedor = document.getElementById("noticia-detalle");
+
+      if (!id || !contenedor) {
+        contenedor.innerHTML = `<p style="color:#c62828; font-weight:600;">Noticia no encontrada. Por favor regresa a la sección de noticias.</p>`;
+        return;
+      }
+
+      const noticia = (window.noticias || []).find(n => n.id === id);
+      if (!noticia) {
+        contenedor.innerHTML = `<p style="color:#c62828; font-weight:600;">Noticia no encontrada. Por favor regresa a la sección de noticias.</p>`;
+        return;
+      }
+
+      contenedor.innerHTML = `
+        <article style="background:white; padding: 30px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+          <h1 style="margin-top:0; color: var(--primary);">${noticia.titulo}</h1>
+          <p style="color:#666; margin-bottom: 20px;"><strong>${noticia.area}</strong> · ${noticia.fecha}</p>
+          <img src="${noticia.imagen}" alt="${noticia.titulo}" style="width:100%; max-height: 360px; object-fit: cover; border-radius: 12px; margin-bottom: 25px;" />
+          <div style="color:#333; line-height:1.7;">${noticia.contenido}</div>
+        </article>
+      `;
+    });
+  </script>
+
+  <script src="recursos/scripts/principal.js"></script>
+</body>
+</html>

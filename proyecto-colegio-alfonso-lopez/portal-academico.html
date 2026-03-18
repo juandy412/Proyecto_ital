@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Académico - ITAL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="recursos/estilos/estilo.css" />
+  <style>
+    .portal-hero {
+      background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .portal-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .portal-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 0;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .dashboard-card {
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(56, 142, 60, 0.08) 100%);
+      border: 2px solid #4CAF50;
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(76, 175, 80, 0.25);
+      border-color: #388E3C;
+    }
+
+    .dashboard-card i {
+      font-size: 3rem;
+      color: #4CAF50;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .dashboard-card h3 {
+      color: #388E3C;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .dashboard-card p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .dashboard-stats {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+      border-left: 5px solid #FFC107;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4CAF50;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .progress-section {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .progress-item {
+      margin-bottom: 24px;
+    }
+
+    .progress-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50, #388E3C);
+      border-radius: 6px;
+      transition: width 0.3s ease;
+    }
+
+    .announcement-section {
+      background: linear-gradient(135deg, #FFC107 0%, #ff9800 100%);
+      border-radius: 12px;
+      padding: 30px;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .announcement-section h3 {
+      color: white;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+
+    .announcement-section p {
+      color: rgba(255,255,255,0.95);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portal-hero h1 {
+        font-size: 2rem;
+      }
+
+      .dashboard-stats {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="encabezado"></div>
+  <div id="navegacion"></div>
+
+  <main>
+    <section class="main-content" style="padding: 40px 20px;">
+      <div class="portal-hero">
+        <h1><i class="fas fa-graduation-cap"></i> Mi Portal Académico</h1>
+        <p>Gestiona tu vida académica, revisa calificaciones y accede a recursos de estudio</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <i class="fas fa-book"></i>
+          <h3>Mis Cursos</h3>
+          <p>Accede a tus cursos actuales y materiales de estudio</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Ver Cursos</a>
+        </div>
+
+        <div class="dashboard-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Calificaciones</h3>
+          <p>Revisa tus notas y desempeño académico</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Ver Calificaciones</a>
+        </div>
+
+        <div class="dashboard-card">
+          <i class="fas fa-clock"></i>
+          <h3>Horario</h3>
+          <p>Consulta tu horario de clases y actividades</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Mi Horario</a>
+        </div>
+
+        <div class="dashboard-card">
+          <i class="fas fa-file-download"></i>
+          <h3>Recursos</h3>
+          <p>Descarga apuntes y materiales complementarios</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Descargar</a>
+        </div>
+
+        <div class="dashboard-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Mensajes</h3>
+          <p>Comunícate con tus profesores e instructores</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Ver Mensajes</a>
+        </div>
+
+        <div class="dashboard-card">
+          <i class="fas fa-cog"></i>
+          <h3>Configuración</h3>
+          <p>Actualiza tu perfil y preferencias académicas</p>
+          <a href="#" class="portal-btn" style="background: #4CAF50; width: 100%; justify-content: center;">Configurar</a>
+        </div>
+      </div>
+
+      <div class="dashboard-stats">
+        <h2 style="margin-bottom: 24px; color: #388E3C;">
+          <i class="fas fa-bar-chart"></i> Estadísticas Académicas
+        </h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Cursos Activos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4.2</div>
+            <div class="stat-label">Promedio General</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">92%</div>
+            <div class="stat-label">Asistencia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8</div>
+            <div class="stat-label">Tareas Completadas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-section">
+        <h2 style="margin-bottom: 24px; color: #388E3C;">
+          <i class="fas fa-tasks"></i> Progreso de Cursos
+        </h2>
+        
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Técnica Agropecuaria</span>
+            <span>75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 75%;"></div>
+          </div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Inglés Técnico</span>
+            <span>60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Competencias Laborales</span>
+            <span>85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="announcement-section">
+        <h3><i class="fas fa-bullhorn"></i> Anuncios Importantes</h3>
+        <p>✓ Próximas evaluaciones: Del 25 de marzo al 5 de abril</p>
+        <p>✓ Matrícula abierta para próximo semestre</p>
+        <p>✓ Taller de actualización de software: Viernes 20 de marzo a las 2 PM</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="pie-pagina"></div>
+
+  <a href="#" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="recursos/scripts/principal.js"></script>
+  <script src="recursos/scripts/modal.js"></script>
+</body>
+</html>

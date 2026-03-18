@@ -43,10 +43,26 @@ class ProductCard extends HTMLElement {
         <div class="price">COP ${Number(price).toLocaleString()}</div>
         <div class="desc">${description}</div>
         <div class="actions">
-          <a class="btn" href="programas.html">Ver</a>
+          <button class="btn" type="button" id="buyBtn">Comprar</button>
         </div>
       </div>
     `;
+
+    const btn = this.shadowRoot.getElementById("buyBtn");
+    if (btn) {
+      btn.addEventListener("click", () => {
+        this.dispatchEvent(new CustomEvent("product-buy", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            name,
+            price,
+            description,
+            image
+          }
+        }));
+      });
+    }
   }
 }
 
