@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inicio - I.T. Alfonso López</title>
   
-  <!-- Estilos compartidos y componentes modulares -->
   <link rel="stylesheet" href="../components/shared/shared.css" />
   <link rel="stylesheet" href="../components/header/header.css" />
   <link rel="stylesheet" href="../components/navigation/navigation.css" />
   <link rel="stylesheet" href="../components/footer/footer.css" />
   <link rel="stylesheet" href="../components/product-card/product-card.css" />
   
-  <!-- Estilos adicionales del proyecto -->
   <link rel="stylesheet" href="../recursos/estilos/estilo.css" />
   
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     .welcome-banner {
@@ -178,27 +175,16 @@
         <p>Ofrecemos tres especialidades técnicas de excelencia</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
-        <product-card
-          name="Técnica en Sistemas"
-          price="Según programa"
-          description="Formación en programación, desarrollo empresarial e investigación tecnológica."
-          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/sistemas.jpg">
-        </product-card>
+      <template id="product-template">
+        <div class="card" style="text-align: left; border-left: 5px solid var(--primary); padding: 20px; margin-bottom: 20px;">
+          <img class="prod-img" src="" alt="Producto" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" />
+          <h3 class="prod-title" style="color: var(--primary); margin-bottom: 10px;"></h3>
+          <p class="prod-price" style="font-weight: bold; color: var(--green-dark); margin-bottom: 10px;"></p>
+          <p class="prod-desc" style="color: #666; line-height: 1.5;"></p>
+        </div>
+      </template>
 
-        <product-card
-          name="Técnica Agropecuaria"
-          price="Según programa"
-          description="Especialización en cultivos sostenibles y producción agroindustrial."
-          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/agropecuarios.jpg">
-        </product-card>
-
-        <product-card
-          name="Técnica en Comercio"
-          price="Según programa"
-          description="Preparación en gestión administrativa, contable y recursos humanos."
-          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/contable.jpg">
-        </product-card>
+      <div id="productos-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
       </div>
     </section>
 
@@ -210,17 +196,16 @@
     <i class="fas fa-arrow-up"></i>
   </a>
 
-  <!-- Scripts modulares -->
   <script src="../components/shared/shared.js"></script>
   <script src="../components/product-card/product-card.js"></script>
   <script src="../components/header/header.js"></script>
   <script src="../components/navigation/navigation.js"></script>
   <script src="../components/footer/footer.js"></script>
   
-  <!-- Script principal del proyecto -->
+  <script src="../recursos/scripts/products.js"></script>
+  
   <script src="../recursos/scripts/principal.js"></script>
   
-  <!-- Script de carga de componentes dinámicos -->
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       // Cargar componentes HTML dinámicamente

@@ -1,7 +1,3 @@
-/**
- * FOOTER - Funcionalidad del Pie de Página
- * Maneja: Año dinámico
- */
 
 function setupFooter() {
   const yearElement = document.getElementById("anio");

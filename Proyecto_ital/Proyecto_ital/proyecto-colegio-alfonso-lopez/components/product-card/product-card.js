@@ -134,18 +134,14 @@ class ProductCard extends HTMLElement {
     }
   }
 
-  /**
-   * Sanitiza texto para evitar inyecciones
-   */
+  
   sanitizeText(text) {
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
   }
 
-  /**
-   * Sanitiza URLs
-   */
+  
   sanitizeUrl(url) {
     try {
       const parsed = new URL(url, window.location.href);
@@ -155,12 +151,10 @@ class ProductCard extends HTMLElement {
     }
   }
 
-  /**
-   * Formatea el precio
-   */
+ 
   formatPrice(price) {
     const num = Number(price);
-    if (isNaN(num)) return "COP 0";
+    if (isNaN(num)) return "COP 100000";
     return `COP ${num.toLocaleString("es-ES")}`;
   }
 }

@@ -1,7 +1,3 @@
-/**
- * HEADER - Funcionalidad del Encabezado
- * Maneja: Autenticación, botón logout, portal académico, carrito
- */
 
 function setupHeaderUserArea() {
   const logoutBtn = document.getElementById("logoutBtn");
