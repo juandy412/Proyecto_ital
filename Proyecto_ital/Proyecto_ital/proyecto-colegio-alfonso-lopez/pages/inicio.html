@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - I.T. Alfonso López</title>
+  
+  <!-- Estilos compartidos y componentes modulares -->
+  <link rel="stylesheet" href="../components/shared/shared.css" />
+  <link rel="stylesheet" href="../components/header/header.css" />
+  <link rel="stylesheet" href="../components/navigation/navigation.css" />
+  <link rel="stylesheet" href="../components/footer/footer.css" />
+  <link rel="stylesheet" href="../components/product-card/product-card.css" />
+  
+  <!-- Estilos adicionales del proyecto -->
+  <link rel="stylesheet" href="../recursos/estilos/estilo.css" />
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .welcome-banner {
+      background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      margin: 20px 0 30px 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: none;
+    }
+
+    .welcome-banner.active {
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+
+    .welcome-banner h2 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .welcome-banner p {
+      color: rgba(255,255,255,0.95);
+      font-size: 1.05rem;
+      margin-bottom: 0;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="encabezado"></div>
+  <div id="navegacion"></div>
+
+  <main>
+    <div id="welcomeBanner" class="welcome-banner">
+      <h2><i class="fas fa-star"></i> ¡Bienvenido, <span id="userName">Estudiante</span>!</h2>
+      <p>Tu portal académico te espera. Accede a tus cursos, calificaciones y recursos de estudio.</p>
+    </div>
+
+    <section class="hero-slider-container" style="background-image: url(/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/649008474_898450092955990_5511268878268018576_n.jpg);">
+        <div class="hero-content">
+            <h1>Educación Técnica para Liderar el Mañana</h1>
+            <p>Formamos profesionales íntegros, con habilidades técnicas y visión de futuro en Ocaña.</p>
+            <a href="./programas.html" class="portal-btn hero-cta">Explora Nuestros Programas <i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </section>
+
+    <section class="main-content fade-in-section" style="padding-top: 40px; padding-bottom: 40px; background: var(--white);">
+        <div class="section-header">
+            <h2>75 Años de Excelencia Educativa en Ocaña</h2>
+            <p style="max-width: 800px; margin: 0 auto 20px;">
+                Desde 1950, la Institución Técnica Alfonso López ha sido un pilar en la formación técnica y humana de la región.
+            </p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="card" style="border-top: 5px solid var(--primary);">
+                <i class="fas fa-chalkboard-teacher card-icon" style="color: var(--primary);"></i>
+                <h3>Énfasis Técnico</h3>
+                <p>Formación especializada en Sistemas, Agroindustria y Comercio.</p>
+            </div>
+            <div class="card" style="border-top: 5px solid var(--secondary);">
+                <i class="fas fa-heart card-icon" style="color: var(--secondary);"></i>
+                <h3>Formación Integral</h3>
+                <p>Valores éticos y sociales para el desarrollo de la comunidad.</p>
+            </div>
+            <div class="card" style="border-top: 5px solid var(--green-dark);">
+                <i class="fas fa-university card-icon" style="color: var(--green-dark);"></i>
+                <h3>Articulación Superior</h3>
+                <p>Convenios con universidades para facilitar la continuidad educativa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content fade-in-section" style="padding: 50px 20px;">
+        <div class="section-header">
+            <h2>Nuestras Especialidades Técnicas</h2>
+            <p>Preparamos a los estudiantes para los retos del mercado laboral y la educación superior.</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="card" style="text-align: left; border-left: 5px solid var(--secondary);">
+                <i class="fas fa-seedling card-icon" style="color: var(--secondary);"></i>
+                <h3>Técnica Agropecuaria</h3>
+                <p>Conocimientos en manejo de cultivos y producción agroindustrial sostenible.</p>
+                <a href="./programas.html#agro" class="portal-btn" style="margin-top: 15px;">Ver Énfasis</a>
+            </div>
+            <div class="card" style="text-align: left; border-left: 5px solid var(--primary);">
+                <i class="fas fa-chart-line card-icon" style="color: var(--primary);"></i>
+                <h3>Técnica en Comercio</h3>
+                <p>Desarrollo de habilidades en gestión administrativa y contable.</p>
+                <a href="./programas.html#comercio" class="portal-btn" style="margin-top: 15px;">Ver Énfasis</a>
+            </div>
+            <div class="card" style="text-align: left; border-left: 5px solid var(--green-dark);">
+                <i class="fas fa-code card-icon" style="color: var(--green-dark);"></i>
+                <h3>Técnica en Sistemas</h3>
+                <p>Programación, desarrollo empresarial y la investigación.</p>
+                <a href="./programas.html#tics" class="portal-btn" style="margin-top: 15px;">Ver Énfasis</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="asymmetrical-section fade-in-section" style="background: var(--highlight); margin: 0 auto 50px auto;">
+        <div class="image-column">
+            <img src="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/ganadores.jpg" alt="Estudiantes en Competencia de Robótica" />
+        </div>
+        <div class="text-column">
+            <h2 style="text-transform: none; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 5px;">¡Somos Campeones Regionales!</h2>
+            <p style="color: var(--green-dark); font-weight: 600;">**Noviembre 2025 - Área de Sistemas**</p>
+            <p>El equipo de la especialidad Técnica en Sistemas obtuvo el primer lugar en la Competencia de Robótica Intercolegial del Norte de Santander, destacando por su creatividad y aplicación de algoritmos avanzados.</p>
+            <a href="./noticias.html" class="portal-btn" style="background: var(--green-dark);">Ver Todas las Noticias <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+    
+    <section class="section-cta fade-in-section" style="padding: 60px 0; background: var(--green-dark); text-align: center;">
+        <div class="section-header" style="max-width: 900px; margin: 0 auto 30px auto;">
+            <h2 style="color: var(--white);">Tu Futuro Comienza Aquí</h2>
+            <p style="color: var(--white); opacity: 0.9;">No te quedes sin cupo. Explora nuestros programas o inicia tu proceso de admisión hoy mismo.</p>
+        </div>
+
+        <div class="info-grid" style="max-width: 1000px; margin: 0 auto; padding: 0 20px; gap: 30px;">
+            <div class="card" style="background: var(--white); border-top: 5px solid var(--primary); padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                <i class="fas fa-clipboard-list card-icon" style="color: var(--primary);"></i>
+                <h3 style="margin-top: 15px;">Proceso de Matrícula</h3>
+                <p>Consulta el calendario, requisitos y pasos para inscribir a nuevos estudiantes.</p>
+                <a href="./matriculas.html" class="portal-btn" style="background: var(--primary); margin-top: 20px;">
+                    Ir a Admisiones <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card" style="background: var(--white); border-top: 5px solid var(--green-dark); padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                <i class="fas fa-map-marker-alt card-icon" style="color: var(--green-dark);"></i>
+                <h3 style="margin-top: 15px;">Sedes y Contacto</h3>
+                <p>Encuentra nuestra ubicación, teléfonos y el formulario para enviar tus preguntas.</p>
+                <a href="./contacto.html" class="portal-btn" style="background: var(--green-dark); margin-top: 20px;">
+                    Contáctanos Ahora <i class="fas fa-phone"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content fade-in-section" style="padding: 50px 20px; background: #f9f9f9;">
+      <div class="section-header">
+        <h2>Nuestras Especializaciones</h2>
+        <p>Ofrecemos tres especialidades técnicas de excelencia</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+        <product-card
+          name="Técnica en Sistemas"
+          price="Según programa"
+          description="Formación en programación, desarrollo empresarial e investigación tecnológica."
+          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/sistemas.jpg">
+        </product-card>
+
+        <product-card
+          name="Técnica Agropecuaria"
+          price="Según programa"
+          description="Especialización en cultivos sostenibles y producción agroindustrial."
+          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/agropecuarios.jpg">
+        </product-card>
+
+        <product-card
+          name="Técnica en Comercio"
+          price="Según programa"
+          description="Preparación en gestión administrativa, contable y recursos humanos."
+          image="/Proyecto_ital/proyecto-colegio-alfonso-lopez/images/contable.jpg">
+        </product-card>
+      </div>
+    </section>
+
+  </main>
+  
+  <div id="pie-pagina"></div>
+
+  <a href="#" id="scrollTopBtn" title="Volver al Inicio">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Scripts modulares -->
+  <script src="../components/shared/shared.js"></script>
+  <script src="../components/product-card/product-card.js"></script>
+  <script src="../components/header/header.js"></script>
+  <script src="../components/navigation/navigation.js"></script>
+  <script src="../components/footer/footer.js"></script>
+  
+  <!-- Script principal del proyecto -->
+  <script src="../recursos/scripts/principal.js"></script>
+  
+  <!-- Script de carga de componentes dinámicos -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Cargar componentes HTML dinámicamente
+      await AppShared.loadComponent("../components/header/header.html", "encabezado");
+      await AppShared.loadComponent("../components/navigation/navigation.html", "navegacion");
+      await AppShared.loadComponent("../components/footer/footer.html", "pie-pagina");
+      
+      // Ejecutar lógica de inicialización después de cargar componentes
+      if (window.initializePageLogic) {
+        window.initializePageLogic();
+      }
+    });
+  </script>
+</body>
+</html>

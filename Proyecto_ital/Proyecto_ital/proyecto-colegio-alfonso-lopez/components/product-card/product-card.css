@@ -1,0 +1,101 @@
+/* ============================================
+   PRODUCT CARD - WEB COMPONENT - ESTILOS
+   ============================================ */
+
+product-card {
+  display: block;
+  font-family: inherit;
+}
+
+product-card .card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+product-card .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+}
+
+product-card .thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+product-card .title {
+  font-weight: 700;
+  margin: 8px 0;
+  font-size: 1.05rem;
+  color: #2c3e50;
+}
+
+product-card .price {
+  color: var(--primary, #4CAF50);
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+product-card .desc {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+product-card .actions {
+  margin-top: 12px;
+}
+
+product-card .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--primary, #4CAF50);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  width: 100%;
+}
+
+product-card .btn:hover {
+  background: var(--green-dark, #388E3C);
+  transform: scale(1.02);
+}
+
+product-card .btn:active {
+  transform: scale(0.98);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  product-card .thumb {
+    height: 120px;
+  }
+
+  product-card .title {
+    font-size: 0.95rem;
+  }
+
+  product-card .price {
+    font-size: 1rem;
+  }
+
+  product-card .desc {
+    font-size: 0.9rem;
+  }
+
+  product-card .btn {
+    padding: 6px 10px;
+  }
+}
